@@ -187,7 +187,7 @@
     <h1>Welcome to MMG Info Solutions</h1>
     <h2>Simplifying Trade & Compliance—So You Can Focus on Growth</h2>
     <p>At MMG Info Solutions, we provide expert guidance in import-export compliance, documentation, and insurance solutions. Our goal is to simplify complex trade processes so your business can grow globally with confidence.</p>
-   <button class="btn" onclick="openPopup()">
+ <button class="btn" onclick="openPopup()">
   Get Free Consultation
 </button>
   </section>
@@ -360,5 +360,114 @@
   top: 5px;
   right: 10px;
   cursor: pointer;
+<div id="popupForm" class="popup-overlay" style="display:none;">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closePopup()">×</span>
+    <h2>Free Consultation</h2>
+    <form action="https://formspree.io/f/your-id" method="POST">
+      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <button type="submit">Submit</button>
+    </form>
+    <a href="https://wa.me/919XXXXXXXXX" target="_blank" class="whatsapp-btn">
+      Chat on WhatsApp
+    </a>
+  </div>
+</div>
+.btn {
+  background: #ff7a00;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 20px rgba(255, 122, 0, 0.4);
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none; /* Hidden initially */
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.7);
+  z-index: 9999;
+}
+
+.popup-content {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 10px;
+  width: 320px;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.popup-content input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.popup-content button {
+  width: 100%;
+  padding: 12px;
+  background: #ff7a00;
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: background 0.3s ease;
+}
+
+.popup-content button:hover {
+  background: #e96b00;
+}
+
+.whatsapp-btn {
+  display: block;
+  margin-top: 15px;
+  background: #25D366;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 24px;
+  cursor: pointer;
+}
+ <script>
+  function openPopup() {
+    document.getElementById("popupForm").style.display = "flex";
+  }
+
+  function closePopup() {
+    document.getElementById("popupForm").style.display = "none";
+  }
+</script>
  </body>
 </html>
