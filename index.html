@@ -184,27 +184,21 @@
 
 <main>
   <section id="home">
-    <h1>Welcome to MMG Info Solutions</h1>
-    <h2>Simplifying Trade & Compliance—So You Can Focus on Growth</h2>
-    <p>At MMG Info Solutions, we provide expert guidance in import-export compliance, documentation, and insurance solutions. Our goal is to simplify complex trade processes so your business can grow globally with confidence.</p>
- <button id="consultBtn" class="consult-btn">Get Free Consultation</button>
-    .consult-btn {
-  background: #ff7a00;
-  color: white;
-  border: none;
-  padding: 12px 22px;
-  font-size: 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
+<section class="hero">
+  <div class="hero-content">
+    <h1>Import-Export Compliance Made Simple</h1>
+    <p>Helping businesses reduce risk, save time, and maximize export benefits.</p>
 
-.consult-btn:hover {
-  background: #ff5500;
-  transform: scale(1.05);
-}
+    <div class="hero-buttons">
+      <button id="consultBtn">Get Free Consultation</button>
+      <a href="https://wa.me/919867965837" target="_blank" class="whatsapp-btn">
+        WhatsApp Us
+      </a>
+    </div>
+  </div>
+</section>
+
   </section>
-
   <section id="services">
     <h2>Core Services</h2>
     <h3>Import Export Code (IEC)</h3>
@@ -292,5 +286,42 @@
 
   </div>
 </div>
-</body>
+.hero {
+  background: linear-gradient(135deg, #0d1b3d, #132a5e);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.hero-buttons button,
+.whatsapp-btn {
+  margin: 10px;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hero-buttons button {
+  background: linear-gradient(135deg, #ff7a00, #ff5500);
+  color: white;
+}
+
+.whatsapp-btn {
+  background: #25D366;
+  color: white;
+}
+ </body>
 </html>
