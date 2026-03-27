@@ -26,13 +26,13 @@
   a:hover {
     text-decoration: underline;
   }
-  header {
+   {
     background-color: #0f1630;
     padding: 20px 15px;
     text-align: center;
     border-bottom: 3px solid #ff7f11;
   }
-  header img {
+   img {
     max-width: 180px;
   }
   nav {
@@ -142,7 +142,7 @@
 </head>
 <body>
 
-<header>
+<>
 <div style="display:flex; align-items:center; justify-content:space-between; padding:15px 40px; background-color:#0b1d3a;">
 
   <!--  -->
@@ -180,7 +180,7 @@
   </div>
 
 </div>
-</header>
+</>
 
 <main>
   <section id="home">
@@ -373,127 +373,5 @@ function logout() {
     document.getElementById("password").value = "";
 }
 </script>
-<header>
-  <div class="logo-title">
-    <img src="your-logo.png" alt="MMG Logo" />
-    <h1>MMG Info Solutions</h1>
-  </div>
-
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#why-choose-us">Why Choose Us</a>
-    <a href="#ideals">Ideals</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <div id="loginContainer">
-    <input type="password" id="password" placeholder="Password" />
-    <button onclick="checkLogin()">Login</button>
-  </div>
-</header>
-    header {
-  background-color: #112a5e;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 24px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-}
-
-.logo-title {
-  display: flex;
-  align-items: center;
-}
-
-.logo-title img {
-  height: 50px;
-  width: auto;
-  margin-right: 15px;
-}
-
-.logo-title h1 {
-  margin: 0;
-  font-weight: 700;
-  font-size: 24px;
-  color: #fff;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 25px;
-  font-weight: 600;
-  font-size: 15px;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #ff7a00;
-}
-
-#loginContainer {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-#loginContainer input[type="password"] {
-  padding: 7px 10px;
-  border-radius: 5px;
-  border: none;
-  font-size: 15px;
-  width: 160px;
-  outline: none;
-}
-
-#loginContainer button {
-  background-color: #ff7a00;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 15px;
-}
-
-#loginContainer button:hover {
-  background-color: #e06500;
-}
-  function showLogoutButton() {
-  const loginContainer = document.getElementById("loginContainer");
-  const logoutBtn = document.createElement("button");
-  logoutBtn.id = "logoutBtn";
-  logoutBtn.innerText = "Logout";
-  logoutBtn.onclick = logout;
-  logoutBtn.style.backgroundColor = "#ff7a00";
-  logoutBtn.style.border = "none";
-  logoutBtn.style.padding = "8px 16px";
-  logoutBtn.style.borderRadius = "5px";
-  logoutBtn.style.color = "white";
-  logoutBtn.style.fontWeight = "700";
-  logoutBtn.style.cursor = "pointer";
-  logoutBtn.style.fontSize = "15px";
-  logoutBtn.style.marginLeft = "10px";
-
-  logoutBtn.onmouseover = () => logoutBtn.style.backgroundColor = "#e06500";
-  logoutBtn.onmouseout = () => logoutBtn.style.backgroundColor = "#ff7a00";
-
-  loginContainer.parentElement.appendChild(logoutBtn);
-}
-
-function logout() {
-  document.getElementById("content").style.display = "none";
-  document.getElementById("loginContainer").style.display = "flex";
-  document.getElementById("password").value = "";
-
-  const logoutBtn = document.getElementById("logoutBtn");
-  if (logoutBtn) logoutBtn.remove();
-}
   </body>
 </html>
