@@ -318,10 +318,12 @@ referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 
     <br><br>
 
+    <!-- Logout Button -->
+    <button onclick="logout()" style="margin-bottom: 15px;">Logout</button>
+
     <!-- 📊 Table -->
     <table border="1" id="dataTable" style="margin:auto;"></table>
 </div>
-
 
 <!-- 📦 CSV LIBRARY -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
@@ -362,6 +364,13 @@ function loadCSV() {
             });
         }
     });
+}
+
+// 🔐 LOGOUT FUNCTION
+function logout() {
+    document.getElementById("content").style.display = "none";
+    document.getElementById("loginBox").style.display = "block";
+    document.getElementById("password").value = "";
 }
 </script>
   </body>
