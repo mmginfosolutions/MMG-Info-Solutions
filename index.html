@@ -1,271 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MMG Info Solutions</title>
-
-<style>
-/* Base body */
-body, html {
-    margin:0; padding:0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0f1c3f;
-    color: white;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Header */
-header {
-    background-color: #112a5e;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 24px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-}
-
-/* Logo and site title */
-.logo-title {
-    display: flex;
-    align-items: center;
-}
-.logo-title img {
-    height: 50px;
-    width: auto;
-    margin-right: 15px;
-}
-.logo-title h1 {
-    margin:0;
-    font-size:22px;
-    font-weight:700;
-}
-
-/* Navigation links */
-nav {
-    display:flex;
-    gap:20px;
-}
-nav a {
-    color:white;
-    text-decoration:none;
-    font-weight:600;
-    font-size:15px;
-}
-nav a:hover { color:#ff7a00; }
-
-/* Login container top-right */
-#loginContainer {
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
-#loginContainer input[type="password"] {
-    padding:6px 10px;
-    border-radius:5px;
-    border:none;
-    font-size:14px;
-    outline:none;
-    width:140px;
-}
-#loginContainer button {
-    background-color:#ff7a00;
-    border:none;
-    padding:6px 14px;
-    border-radius:5px;
-    color:white;
-    font-weight:700;
-    cursor:pointer;
-    font-size:14px;
-    transition:0.3s;
-}
-#loginContainer button:hover { background-color:#e06500; }
-
-/* Protected content area */
-main {
-    flex:1 0 auto;
-    max-width:900px;
-    margin:40px auto 60px;
-    padding:20px;
-    background-color:#132856;
-    border-radius:8px;
-    box-shadow:0 0 15px rgba(0,0,0,0.5);
-}
-
-#content {
-    display:none;
-}
-
-/* Table styles */
-table {
-    border-collapse: collapse;
-    width: 100%;
-    color:white;
-    margin-top:15px;
-}
-th, td {
-    border:1px solid #444;
-    padding:10px;
-    text-align:left;
-}
-th {
-    background-color:#0f2a72;
-    font-weight:700;
-}
-
-/* Download button inside content */
-#content a button {
-    background-color:#ff7a00;
-    border:none;
-    padding:10px 18px;
-    border-radius:6px;
-    cursor:pointer;
-    font-weight:700;
-    font-size:16px;
-    color:white;
-    margin-bottom:15px;
-    transition:0.3s;
-}
-#content a button:hover { background-color:#e06500; }
-
-/* Footer */
-footer {
-    background-color:#112a5e;
-    text-align:center;
-    padding:18px 10px;
-    font-size:14px;
-    color:#bbb;
-    flex-shrink:0;
-}
-
-/* Logout button */
-#logoutBtn {
-    background-color:#ff7a00 !important;
-    border:none;
-    padding:6px 14px;
-    border-radius:5px;
-    color:white;
-    font-weight:700;
-    cursor:pointer;
-    font-size:14px;
-    margin-left:10px;
-}
-#logoutBtn:hover { background-color:#e06500 !important; }
-
-/* Responsive for mobile */
-@media(max-width:768px){
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MMG Info Solutions</title>
+  <style>
+    /* Basic Reset and styles */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0b1a40;
+      color: white;
+      line-height: 1.6;
+    }
+    a {
+      color: #ff7a00;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
     header {
+      background-color: #0f2a72;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo img {
+      height: 40px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      gap: 20px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    nav ul li {
+      padding: 6px 0;
+    }
+    /* Login form styles */
+    #login-form {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    #password-input {
+      padding: 6px 10px;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    #login-button, #logout-button {
+      background-color: #ff7a00;
+      border: none;
+      padding: 7px 15px;
+      border-radius: 4px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    #login-button:hover, #logout-button:hover {
+      background-color: #e06a00;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 15px;
+    }
+    h1, h2 {
+      color: #ff7a00;
+      font-weight: 700;
+    }
+    ul, ol {
+      margin-left: 20px;
+      font-size: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      color: white;
+      font-size: 1rem;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #0f2a72;
+    }
+    hr {
+      border-color: #ff7a00;
+      margin: 40px 0;
+      border-width: 1px 0 0 0;
+    }
+    /* Hidden content initially */
+    #protected-content {
+      display: none;
+    }
+    /* Responsive nav */
+    @media (max-width: 600px) {
+      nav ul {
         flex-direction: column;
-        align-items:flex-start;
-        gap:10px;
+        gap: 10px;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      #login-form {
+        width: 100%;
+        justify-content: flex-start;
+      }
+      #password-input {
+        flex: 1;
+      }
     }
-    nav { flex-wrap:wrap; gap:10px; }
-    #loginContainer { margin-top:5px; }
-}
-</style>
+  </style>
 </head>
-
 <body>
-<header>
-    <div class="logo-title">
-        <img src="your-logo.png" alt="MMG Logo">
-        <h1>MMG Info Solutions</h1>
+  <header>
+    <div class="logo">
+      <!-- Replace src with your logo file path -->
+      <img src="your-logo.png" alt="MMG Logo" />
+      <span style="font-weight: 700; font-size: 1.25rem;">MMG Info Solutions</span>
     </div>
-
     <nav>
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#why-choose-us">Why Choose Us</a>
-        <a href="#ideals">Ideals Clients </a>
-        <a href="#contact">Contact</a>
+      <ul>
+        <li><a href="#welcome">Home</a></li>
+        <li><a href="#core-services">Services</a></li>
+        <li><a href="#why-choose-us">Why Choose Us</a></li>
+        <li><a href="#ideal-clients">Ideal Clients</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
+    <form id="login-form" onsubmit="return false;">
+      <input type="password" id="password-input" placeholder="Password" />
+      <button id="login-button" type="submit">Login</button>
+      <button id="logout-button" type="button" style="display:none;">Logout</button>
+    </form>
+  </header>
 
-    <div id="loginContainer">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="checkLogin()">Login</button>
-    </div>
-</header>
+  <main>
+    <!-- Public content -->
+    <section id="welcome">
+      <h1>Welcome to MMG INFO SOLUTIONS,</h1>
+      <p>Simplifying trade & compliance—so you can focus on growth.</p>
+    </section>
 
-<main>
-    <div id="content">
-        <a href="data.csv" download>
-            <button>Download CSV</button>
-        </a>
-        <table id="dataTable"></table>
-    </div>
-</main>
+    <section id="core-services">
+      <h2>🌍 Core Services:</h2>
+      <ul>
+        <li><strong>Import Export Code (IEC)</strong><br />End-to-end management of IEC applications, modifications, and renewals in full compliance with DGFT guidelines.</li>
+        <li><strong>Registration-cum-Membership Certificate (RCMC)</strong><br />Streamlined handling of RCMC applications and renewals across export promotion councils.</li>
+        <li><strong>RoDTEP & RoSCTL</strong><br />Expertise in filing under RoDTEP and RoSCTL schemes to maximize duty refunds for exporters.</li>
+        <li><strong>Steel Import Monitoring System (SIMS)</strong><br />Advanced registration and monitoring support under the Steel Import Monitoring System:
+          <ul>
+            <li>Covers import of 284 HS-coded steel items</li>
+            <li>URN generation valid for 75 days with a prescribed fee structure</li>
+          </ul>
+        </li>
+        <li><strong>Certificate of Origin (CoO)</strong><br />Fast, reliable issuance of CoO via the national e-platform—compliant with FTA and PTA partner requirements.</li>
+        <li><strong>Insurance Broking</strong><br />Comprehensive broking and advisory solutions across all insurance verticals—marine cargo, liability, trade credit, and more.</li>
+      </ul>
+    </section>
 
-<footer>
-    © 2026 MMG Info Solutions. All rights reserved.
-</footer>
+    <hr />
 
-<!-- CSV parser -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-<script>
-function checkLogin(){
-    const pass = document.getElementById("password").value;
-    if(pass==="admin@2026"){
-        document.getElementById("loginContainer").style.display="none";
-        document.getElementById("content").style.display="block";
-        loadCSV();
-        addLogoutButton();
-    }else{
-        alert("Wrong password!");
+    <section id="why-choose-us">
+      <h2>✅ Why Choose Us:</h2>
+      <ol>
+        <li><strong>Expertise Across the Trade Ecosystem</strong><br />From documentation to compliance and claim settlements, we handle every critical step.</li>
+        <li><strong>Regulatory Compliance & Updates</strong><br />Stay aligned with evolving DGFT norms, tariff codes, SIMS updates (SIMS 2.0 launched July 25, 2024), taxguru.in, and export schemes.</li>
+        <li><strong>Efficiency & Accuracy</strong><br />Avoid delays and penalties with precise filings and proactive monitoring.</li>
+        <li><strong>Custom Solutions</strong><br />Services tailored to your product category—be it metals, electronics, agriculture, or textiles.</li>
+        <li><strong>Risk Mitigation via Insurance</strong><br />End-to-end support from risk assessment to policy selection and claims advocacy.</li>
+      </ol>
+    </section>
+
+    <hr />
+
+    <section id="service-overview">
+      <h2>🔎 Our Service Overview</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>What We Offer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>IEC & RCMC</strong></td>
+            <td>Registration, updates, renewals—all DGFT-compliant</td>
+          </tr>
+          <tr>
+            <td><strong>Export Incentives</strong></td>
+            <td>RoDTEP & RoSCTL filings, subsidy claims, query resolution</td>
+          </tr>
+          <tr>
+            <td><strong>SIMS Compliance</strong></td>
+            <td>Online registration, URN generation, customs clearance support</td>
+          </tr>
+          <tr>
+            <td><strong>CoO Issuance</strong></td>
+            <td>Digital certificates for all FTAs/PTAs via central platform</td>
+          </tr>
+          <tr>
+            <td><strong>Insurance Broking</strong></td>
+            <td>Marine, Liability, Property, Health & Life structured coverage and claims support</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr />
+
+    <section id="ideal-clients">
+      <h2>🔎 Ideal Clients:</h2>
+      <ul>
+        <li>Importers of steel, metal, and HS-coded goods requiring SIMS licensing and compliance.</li>
+        <li>Exporters aiming for trade benefits under RoDTEP, RoSCTL, RCMC, and FTAs.</li>
+        <li>Manufacturers & Traders needing accurate CoO issuance and insurance protection.</li>
+        <li>Businesses seeking comprehensive support in managing trade regulations and insurance risk.</li>
+      </ul>
+    </section>
+
+    <hr />
+
+    <section id="contact">
+      <h2>Ready to elevate your global trade operations?</h2>
+      <p>
+        Contact <strong>MMG Info Solutions</strong> today for a free consultation on compliance, incentives, documentation, and insurance—so your business can excel without regulatory hassles.
+      </p>
+    </section>
+
+    <!-- Protected content below -->
+    <section id="protected-content">
+      <h2>Protected Data Section</h2>
+      <p>This content is visible only after login.</p>
+      <!-- You can add your CSV table and download button here -->
+      <!-- Example placeholder -->
+      <p><em>CSV data and download button will show here after login.</em></p>
+    </section>
+  </main>
+
+  <script>
+    // Password for login - change as needed
+    const PASSWORD = 'admin@2026';
+
+    const loginForm = document.getElementById('login-form');
+    const passwordInput = document.getElementById('password-input');
+    const loginButton = document.getElementById('login-button');
+    const logoutButton = document.getElementById('logout-button');
+    const protectedContent = document.getElementById('protected-content');
+
+    // Check if already logged in on page load
+    window.onload = function () {
+      if (localStorage.getItem('mmgLoggedIn') === 'true') {
+        showProtectedContent();
+      } else {
+        hideProtectedContent();
+      }
+    };
+
+    loginForm.addEventListener('submit', function () {
+      const enteredPassword = passwordInput.value;
+      if (enteredPassword === PASSWORD) {
+        localStorage.setItem('mmgLoggedIn', 'true');
+        showProtectedContent();
+        passwordInput.value = '';
+      } else {
+        alert('Incorrect password. Please try again.');
+        passwordInput.value = '';
+      }
+    });
+
+    logoutButton.addEventListener('click', function () {
+      localStorage.removeItem('mmgLoggedIn');
+      hideProtectedContent();
+    });
+
+    function showProtectedContent() {
+      protectedContent.style.display = 'block';
+      loginButton.style.display = 'none';
+      logoutButton.style.display = 'inline-block';
+      passwordInput.style.display = 'none';
     }
-}
 
-function loadCSV(){
-    Papa.parse("data.csv",{download:true,complete:function(results){
-        const table=document.getElementById("dataTable");
-        table.innerHTML="";
-        if(results.data.length>0){
-            const thead=document.createElement("thead");
-            const tr=document.createElement("tr");
-            results.data[0].forEach(header=>{
-                const th=document.createElement("th");
-                th.innerText=header;
-                tr.appendChild(th);
-            });
-            thead.appendChild(tr);
-            table.appendChild(thead);
-        }
-        const tbody=document.createElement("tbody");
-        for(let i=1;i<results.data.length;i++){
-            const row=results.data[i];
-            if(row.length===1 && row[0].trim()==="") continue;
-            const tr=document.createElement("tr");
-            row.forEach(cell=>{
-                const td=document.createElement("td");
-                td.innerText=cell;
-                tr.appendChild(td);
-            });
-            tbody.appendChild(tr);
-        }
-        table.appendChild(tbody);
-    }});
-}
-
-function addLogoutButton(){
-    const loginContainer=document.getElementById("loginContainer");
-    const logoutBtn=document.createElement("button");
-    logoutBtn.id="logoutBtn";
-    logoutBtn.innerText="Logout";
-    logoutBtn.onclick=logout;
-    loginContainer.parentElement.appendChild(logoutBtn);
-}
-
-function logout(){
-    document.getElementById("content").style.display="none";
-    document.getElementById("loginContainer").style.display="flex";
-    document.getElementById("password").value="";
-    const logoutBtn=document.getElementById("logoutBtn");
-    if(logoutBtn) logoutBtn.remove();
-}
-</script>
+    function hideProtectedContent() {
+      protectedContent.style.display = 'none';
+      loginButton.style.display = 'inline-block';
+      logoutButton.style.display = 'none';
+      passwordInput.style.display = 'inline-block';
+    }
+  </script>
 </body>
 </html>
