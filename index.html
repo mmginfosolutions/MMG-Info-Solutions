@@ -156,6 +156,115 @@ var sc_security="YOUR_SECURITY_CODE";
 `);
 }
 </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MMG Info Solutions</title>
+
+<style>
+body {font-family: Arial; margin:0; background:#f4f6f9;}
+header {display:flex; align-items:center; padding:15px; background:#fff; box-shadow:0 2px 5px #ccc;}
+header img {height:60px; margin-right:15px;}
+section {padding:25px;}
+.card {background:#fff; padding:15px; margin-bottom:10px; border-radius:8px;}
+button {padding:10px; background:#007BFF; color:#fff; border:none;}
+#loginPage {text-align:center; margin-top:100px;}
+input {padding:10px; margin:5px;}
+footer {text-align:center; padding:15px; background:#eee;}
+</style>
+
+</head>
+
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage">
+  <h2>MMG INFO SOLUTIONS</h2>
+  <input id="user" placeholder="Username"><br>
+  <input id="pass" type="password" placeholder="Password"><br>
+  <button onclick="login()">Login</button>
+</div>
+
+<!-- MAIN WEBSITE -->
+<div id="mainPage" style="display:none;">
+
+<header>
+  <img src="Logo.png">
+  <h2>MMG INFO SOLUTIONS</h2>
+  <button onclick="logout()" style="margin-left:auto;background:red;">Logout</button>
+</header>
+
+<section>
+<h3>Welcome</h3>
+<p><b>Simplifying trade & compliance—so you can focus on growth.</b></p>
+</section>
+
+<section>
+<h3>Core Services</h3>
+
+<div class="card"><b>IEC</b> - End-to-end IEC services</div>
+<div class="card"><b>RCMC</b> - Registration & renewals</div>
+<div class="card"><b>RoDTEP & RoSCTL</b></div>
+<div class="card"><b>SIMS</b> - 284 HS items</div>
+<div class="card"><b>CoO</b></div>
+<div class="card"><b>Insurance</b></div>
+
+</section>
+
+<section>
+<h3>Why Choose Us</h3>
+<ul>
+<li>Expertise</li>
+<li>Compliance</li>
+<li>Accuracy</li>
+<li>Custom Solutions</li>
+<li>Risk Management</li>
+</ul>
+</section>
+
+<footer>
+© MMG Info Solutions
+</footer>
+
+<!-- StatCounter -->
+<script>
+var sc_project=YOUR_PROJECT_ID;
+var sc_invisible=0;
+var sc_security="YOUR_SECURITY_CODE";
+</script>
+<script src="https://www.statcounter.com/counter/counter.js" async></script>
+
+</div>
+
+<script>
+function login(){
+ let u=document.getElementById("user").value;
+ let p=document.getElementById("pass").value;
+
+ if(u==="admin" && p==="1234"){
+   localStorage.setItem("login","yes");
+   showPage();
+ } else {
+   alert("Invalid Login");
+ }
+}
+
+function logout(){
+ localStorage.removeItem("login");
+ location.reload();
+}
+
+function showPage(){
+ if(localStorage.getItem("login")==="yes"){
+   document.getElementById("loginPage").style.display="none";
+   document.getElementById("mainPage").style.display="block";
+ }
+}
+
+window.onload = showPage;
+</script>
 
 </body>
 </html>
