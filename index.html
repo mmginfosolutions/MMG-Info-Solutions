@@ -6,70 +6,38 @@
 <title>MMG Info Solutions</title>
 
 <style>
-body {font-family: Arial; margin:0; line-height:1.6; background:#f4f6f9;}
-header {display:flex; align-items:center; padding:15px 20px; background:#fff; box-shadow:0 2px 5px #ccc;}
+body {font-family: Arial; margin:0; background:#f5f7fa; line-height:1.7;}
+header {display:flex; align-items:center; padding:15px; background:#fff; box-shadow:0 2px 6px #ccc;}
 header img {height:60px; margin-right:15px;}
-header h1 {margin:0;}
-.logout {margin-left:auto; background:red;}
-
-section {padding:30px;}
-h2 {color:#007BFF;}
-
+h1,h2 {color:#007BFF;}
+section {padding:25px;}
 .card {background:#fff; padding:20px; margin-bottom:15px; border-radius:8px; box-shadow:0 2px 5px #ddd;}
-
 ul {padding-left:20px;}
-
-table {width:100%; border-collapse:collapse;}
-th, td {border:1px solid #ddd; padding:10px;}
-
 button {padding:10px; background:#007BFF; color:#fff; border:none; border-radius:5px;}
-
 #loginPage {text-align:center; margin-top:120px;}
 input {padding:10px; margin:5px; width:250px;}
-
 footer {text-align:center; padding:15px; background:#eee;}
 </style>
-
-<script>
-function login(){
- let u=document.getElementById("user").value;
- let p=document.getElementById("pass").value;
-
- if(u==="admin" && p==="1234"){
-   localStorage.setItem("login","yes");
-   location.reload();
- } else {
-   alert("Invalid Login");
- }
-}
-
-function logout(){
- localStorage.removeItem("login");
- location.reload();
-}
-</script>
 
 </head>
 
 <body>
 
-<script>
-if(localStorage.getItem("login")!=="yes"){
-document.write(`
+<!-- LOGIN -->
 <div id="loginPage">
 <h2>MMG INFO SOLUTIONS</h2>
 <input id="user" placeholder="Username"><br>
 <input id="pass" type="password" placeholder="Password"><br>
 <button onclick="login()">Login</button>
 </div>
-`);
-} else {
-document.write(`
+
+<!-- MAIN CONTENT -->
+<div id="mainPage" style="display:none;">
 
 <header>
 <img src="logo.png">
-<h1>MMG INFO SOLUTIONS</h1>
-<button class="logout" onclick="logout()">Logout</button>
+<h2>MMG INFO SOLUTIONS</h2>
+<button onclick="logout()" style="margin-left:auto;background:red;">Logout</button>
 </header>
 
 <section>
@@ -77,65 +45,89 @@ document.write(`
 <p><b>Simplifying trade & compliance—so you can focus on growth.</b></p>
 </section>
 
-<section>
-<h2>Core Services</h2>
+<section class="card">
+<h2>What is Export?</h2>
+<p>Export refers to sending goods/services to another country for sale. It is a key part of international trade helping economic growth, job creation and revenue generation.</p>
 
-<div class="card"><b>Import Export Code (IEC)</b><br>
-End-to-end IEC applications, modifications, renewals.</div>
-
-<div class="card"><b>RCMC</b><br>
-Handling of applications & renewals.</div>
-
-<div class="card"><b>RoDTEP & RoSCTL</b><br>
-Maximize duty refunds.</div>
-
-<div class="card"><b>SIMS</b><br>
-284 HS items, URN valid 75 days.</div>
-
-<div class="card"><b>Certificate of Origin</b><br>
-FTA/PTA compliant issuance.</div>
-
-<div class="card"><b>Insurance Broking</b><br>
-Marine, liability, trade credit.</div>
-
+<ul>
+<li>Market Research</li>
+<li>Regulations & Documentation</li>
+<li>Logistics & Transport</li>
+<li>Pricing & Payment</li>
+<li>Marketing & Promotion</li>
+<li>Legal Contracts</li>
+<li>Risk Management</li>
+<li>After-Sales Support</li>
+</ul>
 </section>
 
-<section>
+<section class="card">
+<h2>IEC (Importer Exporter Code)</h2>
+<p>IEC is a 10-digit code issued by DGFT required for import/export business.</p>
+<ul>
+<li>Mandatory for trade</li>
+<li>Lifetime validity</li>
+<li>Required for customs clearance</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>RCMC</h2>
+<p>Registration with Export Promotion Councils to claim incentives and benefits.</p>
+</section>
+
+<section class="card">
+<h2>Digital Signature</h2>
+<p>Used for secure online transactions, authentication and filing documents.</p>
+</section>
+
+<section class="card">
+<h2>RoDTEP / RoSCTL</h2>
+<p>Government schemes to refund taxes and improve export competitiveness.</p>
+</section>
+
+<section class="card">
+<h2>SIMS</h2>
+<p>Steel Import Monitoring System tracks steel imports and ensures compliance.</p>
+</section>
+
+<section class="card">
+<h2>Certificate of Origin</h2>
+<p>Certifies origin of goods for trade agreements and customs clearance.</p>
+</section>
+
+<section class="card">
+<h2>Insurance Services</h2>
+<ul>
+<li>Health & Life Insurance</li>
+<li>Travel Insurance</li>
+<li>Cargo Insurance</li>
+<li>Property Insurance</li>
+</ul>
+</section>
+
+<section class="card">
 <h2>Why Choose Us</h2>
 <ul>
-<li>Expertise Across Trade Ecosystem</li>
-<li>Regulatory Compliance & Updates</li>
-<li>Efficiency & Accuracy</li>
+<li>Trade Expertise</li>
+<li>Compliance Updates</li>
+<li>Accuracy</li>
 <li>Custom Solutions</li>
-<li>Risk Mitigation</li>
+<li>Risk Protection</li>
 </ul>
 </section>
 
-<section>
-<h2>Service Overview</h2>
-
-<table>
-<tr><th>Service</th><th>What We Offer</th></tr>
-<tr><td>IEC & RCMC</td><td>Registration & renewals</td></tr>
-<tr><td>Export Incentives</td><td>RoDTEP & RoSCTL</td></tr>
-<tr><td>SIMS</td><td>URN & compliance</td></tr>
-<tr><td>CoO</td><td>FTA/PTA certificates</td></tr>
-<tr><td>Insurance</td><td>Coverage & claims</td></tr>
-</table>
-
-</section>
-
-<section>
+<section class="card">
 <h2>Ideal Clients</h2>
 <ul>
-<li>Importers (steel, HS goods)</li>
-<li>Exporters (RoDTEP, RoSCTL)</li>
-<li>Manufacturers & Traders</li>
-<li>Compliance-focused businesses</li>
+<li>Importers</li>
+<li>Exporters</li>
+<li>Manufacturers</li>
+<li>Businesses needing compliance</li>
 </ul>
 </section>
 
-<section>
+<section class="card">
 <h2>Contact</h2>
 <p>Ready to elevate your global trade operations? Contact us today.</p>
 </section>
@@ -150,117 +142,33 @@ var sc_project=YOUR_PROJECT_ID;
 var sc_invisible=0;
 var sc_security="YOUR_SECURITY_CODE";
 </script>
-
-<script src="https://www.statcounter.com/counter/counter.js" async></script>
-
-`);
-}
-</script>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MMG Info Solutions</title>
-
-<style>
-body {font-family: Arial; margin:0; background:#f4f6f9;}
-header {display:flex; align-items:center; padding:15px; background:#fff; box-shadow:0 2px 5px #ccc;}
-header img {height:60px; margin-right:15px;}
-section {padding:25px;}
-.card {background:#fff; padding:15px; margin-bottom:10px; border-radius:8px;}
-button {padding:10px; background:#007BFF; color:#fff; border:none;}
-#loginPage {text-align:center; margin-top:100px;}
-input {padding:10px; margin:5px;}
-footer {text-align:center; padding:15px; background:#eee;}
-</style>
-
-</head>
-
-<body>
-
-<!-- LOGIN PAGE -->
-<div id="loginPage">
-  <h2>MMG INFO SOLUTIONS</h2>
-  <input id="user" placeholder="Username"><br>
-  <input id="pass" type="password" placeholder="Password"><br>
-  <button onclick="login()">Login</button>
-</div>
-
-<!-- MAIN WEBSITE -->
-<div id="mainPage" style="display:none;">
-
-<header>
-  <img src="Logo.png">
-  <h2>MMG INFO SOLUTIONS</h2>
-  <button onclick="logout()" style="margin-left:auto;background:red;">Logout</button>
-</header>
-
-<section>
-<h3>Welcome</h3>
-<p><b>Simplifying trade & compliance—so you can focus on growth.</b></p>
-</section>
-
-<section>
-<h3>Core Services</h3>
-
-<div class="card"><b>IEC</b> - End-to-end IEC services</div>
-<div class="card"><b>RCMC</b> - Registration & renewals</div>
-<div class="card"><b>RoDTEP & RoSCTL</b></div>
-<div class="card"><b>SIMS</b> - 284 HS items</div>
-<div class="card"><b>CoO</b></div>
-<div class="card"><b>Insurance</b></div>
-
-</section>
-
-<section>
-<h3>Why Choose Us</h3>
-<ul>
-<li>Expertise</li>
-<li>Compliance</li>
-<li>Accuracy</li>
-<li>Custom Solutions</li>
-<li>Risk Management</li>
-</ul>
-</section>
-
-<footer>
-© MMG Info Solutions
-</footer>
-
-<!-- StatCounter -->
-<script>
-var sc_project=YOUR_PROJECT_ID;
-var sc_invisible=0;
-var sc_security="YOUR_SECURITY_CODE";
-</script>
 <script src="https://www.statcounter.com/counter/counter.js" async></script>
 
 </div>
 
 <script>
 function login(){
- let u=document.getElementById("user").value;
- let p=document.getElementById("pass").value;
+let u=document.getElementById("user").value;
+let p=document.getElementById("pass").value;
 
- if(u==="admin" && p==="1234"){
-   localStorage.setItem("login","yes");
-   showPage();
- } else {
-   alert("Invalid Login");
- }
+if(u==="admin" && p==="1234"){
+localStorage.setItem("login","yes");
+showPage();
+}else{
+alert("Invalid Login");
+}
 }
 
 function logout(){
- localStorage.removeItem("login");
- location.reload();
+localStorage.removeItem("login");
+location.reload();
 }
 
 function showPage(){
- if(localStorage.getItem("login")==="yes"){
-   document.getElementById("loginPage").style.display="none";
-   document.getElementById("mainPage").style.display="block";
- }
+if(localStorage.getItem("login")==="yes"){
+document.getElementById("loginPage").style.display="none";
+document.getElementById("mainPage").style.display="block";
+}
 }
 
 window.onload = showPage;
