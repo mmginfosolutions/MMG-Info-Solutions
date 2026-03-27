@@ -301,5 +301,68 @@ src="https://c.statcounter.com/13213113/0/259d6a0c/0/"
 alt="web stats"
 referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
 <!-- End of Statcounter Code -->
+ <div id="loginBox" style="text-align:center; margin-top:50px;">
+    <h3>Authorized Access Only</h3>
+    <input type="password" id="password" placeholder="Enter Password">
+    <button onclick="checkLogin()">Login</button>
+</div>
+
+<!-- 🔒 PROTECTED CONTENT -->
+<div id="content" style="display:none; text-align:center;">
+    <h2>Protected Data</h2>
+
+    <!-- 📥 Download CSV -->
+    <a href="data.csv" download>
+        <button>Download CSV</button>
+    </a>
+
+    <br><br>
+
+    <!-- 📊 Table -->
+    <table border="1" id="dataTable" style="margin:auto;"></table>
+</div>
+
+
+<!-- 📦 CSV LIBRARY -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+
+<script>
+// 🔐 LOGIN FUNCTION
+function checkLogin() {
+    var pass = document.getElementById("password").value;
+
+    // 👉 CHANGE PASSWORD HERE
+    if(pass === "admin@2026") {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("content").style.display = "block";
+        loadCSV();
+    } else {
+        alert("Wrong password!");
+    }
+}
+
+// 📊 LOAD CSV DATA
+function loadCSV() {
+    Papa.parse("data.csv", {
+        download: true,
+        complete: function(results) {
+            let table = document.getElementById("dataTable");
+            table.innerHTML = "";
+
+            results.data.forEach(row => {
+                let tr = document.createElement("tr");
+
+                row.forEach(cell => {
+                    let td = document.createElement("td");
+                    td.innerText = cell;
+                    tr.appendChild(td);
+                });
+
+                table.appendChild(tr);
+            });
+        }
+    });
+}
+</script>
   </body>
 </html>
