@@ -6,16 +6,17 @@
 <title>MMG Info Solutions</title>
 
 <style>
-body {font-family: Arial; margin:0; background:#f5f7fa;}
+body {font-family: Arial; margin:0; background:#f5f7fa; line-height:1.7;}
 header {display:flex; align-items:center; padding:15px; background:#fff; box-shadow:0 2px 5px #ccc;}
 header img {height:60px; margin-right:15px;}
-h2 {color:#007BFF;}
+h1,h2 {color:#007BFF;}
 section {padding:25px;}
 .card {background:#fff; padding:20px; margin-bottom:15px; border-radius:8px; box-shadow:0 2px 5px #ddd;}
 ul {padding-left:20px;}
-button {padding:10px; background:#007BFF; color:#fff; border:none; border-radius:5px;}
+table {width:100%; border-collapse:collapse;}
+th, td {border:1px solid #ddd; padding:10px;}
 input, textarea {width:100%; padding:10px; margin-bottom:10px;}
-#loginPage {text-align:center; margin-top:120px;}
+button {padding:10px; background:#007BFF; color:#fff; border:none; border-radius:5px;}
 footer {text-align:center; padding:15px; background:#eee;}
 </style>
 
@@ -23,21 +24,9 @@ footer {text-align:center; padding:15px; background:#eee;}
 
 <body>
 
-<!-- LOGIN -->
-<div id="loginPage">
-<h2>MMG INFO SOLUTIONS</h2>
-<input id="user" placeholder="Username"><br>
-<input id="pass" type="password" placeholder="Password"><br>
-<button onclick="login()">Login</button>
-</div>
-
-<!-- MAIN CONTENT -->
-<div id="mainPage" style="display:none;">
-
 <header>
 <img src="logo.png" alt="MMG Logo">
-<h2>MMG INFO SOLUTIONS</h2>
-<button onclick="logout()" style="margin-left:auto;background:red;">Logout</button>
+<h1>MMG INFO SOLUTIONS</h1>
 </header>
 
 <section>
@@ -48,11 +37,11 @@ footer {text-align:center; padding:15px; background:#eee;}
 <section class="card">
 <h2>Core Services</h2>
 <ul>
-<li><b>IEC</b> – End-to-end IEC applications & renewals</li>
-<li><b>RCMC</b> – Registration & renewals</li>
+<li><b>Import Export Code (IEC)</b> – End-to-end IEC applications, modifications & renewals</li>
+<li><b>RCMC</b> – Export promotion council registration</li>
 <li><b>RoDTEP & RoSCTL</b> – Duty refund filing</li>
-<li><b>SIMS</b> – 284 HS items, URN valid 75 days</li>
-<li><b>Certificate of Origin</b></li>
+<li><b>SIMS</b> – Steel Import Monitoring (284 HS items, URN valid 75 days)</li>
+<li><b>Certificate of Origin (CoO)</b></li>
 <li><b>Insurance Broking</b></li>
 </ul>
 </section>
@@ -70,22 +59,22 @@ footer {text-align:center; padding:15px; background:#eee;}
 
 <section class="card">
 <h2>Service Overview</h2>
-<table border="1" width="100%">
+<table>
 <tr><th>Service</th><th>What We Offer</th></tr>
 <tr><td>IEC & RCMC</td><td>Registration, updates, renewals</td></tr>
-<tr><td>Export Incentives</td><td>RoDTEP & RoSCTL</td></tr>
-<tr><td>SIMS</td><td>URN generation</td></tr>
+<tr><td>Export Incentives</td><td>RoDTEP & RoSCTL filings</td></tr>
+<tr><td>SIMS</td><td>URN generation & compliance</td></tr>
 <tr><td>CoO</td><td>FTA/PTA certificates</td></tr>
-<tr><td>Insurance</td><td>Coverage & claims</td></tr>
+<tr><td>Insurance</td><td>Coverage & claims support</td></tr>
 </table>
 </section>
 
 <section class="card">
 <h2>Ideal Clients</h2>
 <ul>
-<li>Importers</li>
-<li>Exporters</li>
-<li>Manufacturers</li>
+<li>Importers of steel & HS goods</li>
+<li>Exporters (RoDTEP, RoSCTL, RCMC)</li>
+<li>Manufacturers & Traders</li>
 <li>Compliance-focused businesses</li>
 </ul>
 </section>
@@ -106,7 +95,7 @@ footer {text-align:center; padding:15px; background:#eee;}
 
 <section>
 <p><b>Ready to elevate your global trade operations?</b><br>
-Contact MMG Info Solutions today.</p>
+Contact MMG Info Solutions today for a free consultation.</p>
 </section>
 
 <footer>
@@ -120,36 +109,6 @@ var sc_invisible=0;
 var sc_security="YOUR_SECURITY_CODE";
 </script>
 <script src="https://www.statcounter.com/counter/counter.js" async></script>
-
-</div>
-
-<script>
-function login(){
-let u=document.getElementById("user").value;
-let p=document.getElementById("pass").value;
-
-if(u==="admin" && p==="1234"){
-localStorage.setItem("login","yes");
-showPage();
-}else{
-alert("Invalid Login");
-}
-}
-
-function logout(){
-localStorage.removeItem("login");
-location.reload();
-}
-
-function showPage(){
-if(localStorage.getItem("login")==="yes"){
-document.getElementById("loginPage").style.display="none";
-document.getElementById("mainPage").style.display="block";
-}
-}
-
-window.onload = showPage;
-</script>
 
 </body>
 </html>
