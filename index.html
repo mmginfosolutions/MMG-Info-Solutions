@@ -6,18 +6,16 @@
 <title>MMG Info Solutions</title>
 
 <style>
-body {font-family: Arial; margin:0; background:#f5f7fa; line-height:1.7;}
-header {display:flex; align-items:center; padding:15px; background:#fff; box-shadow:0 2px 5px #ccc;}
+body {font-family: Arial; margin:0; background:#f5f7fa;}
+header {display:flex; align-items:center; padding:15px; background:#fff;}
 header img {height:60px; margin-right:15px;}
-h1,h2 {color:#007BFF;}
 section {padding:25px;}
-.card {background:#fff; padding:20px; margin-bottom:15px; border-radius:8px; box-shadow:0 2px 5px #ddd;}
-ul {padding-left:20px;}
-table {width:100%; border-collapse:collapse;}
-th, td {border:1px solid #ddd; padding:10px;}
-input, textarea {width:100%; padding:10px; margin-bottom:10px;}
-button {padding:10px; background:#007BFF; color:#fff; border:none; border-radius:5px;}
-footer {text-align:center; padding:15px; background:#eee;}
+.card {background:#fff; padding:20px; margin-bottom:15px; border-radius:8px;}
+button {padding:10px; background:#007BFF; color:white; border:none;}
+#loginBox {display:none; text-align:center; margin-top:20px;}
+#dataSection {display:none;}
+table {border-collapse:collapse; width:100%;}
+th, td {border:1px solid #ddd; padding:8px;}
 </style>
 
 </head>
@@ -25,101 +23,101 @@ footer {text-align:center; padding:15px; background:#eee;}
 <body>
 
 <header>
-<img src="logo.png" alt="MMG Logo">
-<h1>MMG INFO SOLUTIONS</h1>
+<img src="logo.png">
+<h2>MMG INFO SOLUTIONS</h2>
 </header>
 
 <section>
-<h2>Welcome</h2>
+<h3>Welcome</h3>
 <p><b>Simplifying trade & compliance—so you can focus on growth.</b></p>
 </section>
 
 <section class="card">
-<h2>Core Services</h2>
+<h3>Core Services</h3>
 <ul>
-<li><b>Import Export Code (IEC)</b> – End-to-end IEC applications, modifications & renewals</li>
-<li><b>RCMC</b> – Export promotion council registration</li>
-<li><b>RoDTEP & RoSCTL</b> – Duty refund filing</li>
-<li><b>SIMS</b> – Steel Import Monitoring (284 HS items, URN valid 75 days)</li>
-<li><b>Certificate of Origin (CoO)</b></li>
-<li><b>Insurance Broking</b></li>
+<li>IEC</li>
+<li>RCMC</li>
+<li>RoDTEP & RoSCTL</li>
+<li>SIMS</li>
+<li>CoO</li>
+<li>Insurance</li>
 </ul>
 </section>
 
+<!-- VIEW DATA BUTTON -->
 <section class="card">
-<h2>Why Choose Us</h2>
-<ul>
-<li>Expertise Across Trade Ecosystem</li>
-<li>Regulatory Compliance & Updates</li>
-<li>Efficiency & Accuracy</li>
-<li>Custom Solutions</li>
-<li>Risk Mitigation via Insurance</li>
-</ul>
-</section>
+<h3>Authorized Data Access</h3>
+<button onclick="showLogin()">View Data</button>
 
-<section class="card">
-<h2>Service Overview</h2>
-<table>
-<tr><th>Service</th><th>What We Offer</th></tr>
-<tr><td>IEC & RCMC</td><td>Registration, updates, renewals</td></tr>
-<tr><td>Export Incentives</td><td>RoDTEP & RoSCTL filings</td></tr>
-<tr><td>SIMS</td><td>URN generation & compliance</td></tr>
-<tr><td>CoO</td><td>FTA/PTA certificates</td></tr>
-<tr><td>Insurance</td><td>Coverage & claims support</td></tr>
-</table>
-</section>
-
-<section class="card">
-<h2>Ideal Clients</h2>
-<ul>
-<li>Importers of steel & HS goods</li>
-<li>Exporters (RoDTEP, RoSCTL, RCMC)</li>
-<li>Manufacturers & Traders</li>
-<li>Compliance-focused businesses</li>
-</ul>
-</section>
-
-<!-- REQUEST FORM -->
-<section class="card">
-<h2>Request Form</h2>
-
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-<input type="text" name="name" placeholder="Name" required>
-<input type="tel" name="mobile" placeholder="Mobile Number" required>
-<input type="email" name="email" placeholder="Email ID" required>
-<textarea name="remarks" placeholder="Your Remarks"></textarea>
-<button type="submit">Submit</button>
-</form>
+<div id="loginBox">
+<br>
+<input id="user" placeholder="Username"><br><br>
+<input id="pass" type="password" placeholder="Password"><br><br>
+<button onclick="login()">Login</button>
+</div>
 
 </section>
 
-<section>
-<p><b>Ready to elevate your global trade operations?</b><br>
-Contact MMG Info Solutions today for a free consultation.</p>
+<!-- DATA TABLE -->
+<section id="dataSection" class="card">
+<h3>CSV Data</h3>
+<button onclick="logout()" style="background:red;">Logout</button>
+<br><br>
+<table id="dataTable"></table>
 </section>
 
-<footer>
-© MMG Info Solutions
-</footer>
+<script>
+function showLogin(){
+document.getElementById("loginBox").style.display="block";
+}
 
-<!-- STATCOUNTER -->
-<!-- Default Statcounter code for MMG INFO SOLUTIONS
-https://mmginfosolutions.github.io/MMG-Info-Solutions/ -->
-<script type="text/javascript">
-var sc_project=13213113; 
-var sc_invisible=0; 
-var sc_security="a9c2372f"; 
-var scJsHost = "https://";
-document.write("<sc"+"ript type='text/javascript' src='" +
-scJsHost+
-"statcounter.com/counter/counter.js'></"+"script>");
+function login(){
+let u=document.getElementById("user").value;
+let p=document.getElementById("pass").value;
+
+if(u==="admin" && p==="1234"){
+localStorage.setItem("auth","yes");
+loadCSV();
+document.getElementById("dataSection").style.display="block";
+document.getElementById("loginBox").style.display="none";
+}else{
+alert("Invalid Login");
+}
+}
+
+function logout(){
+localStorage.removeItem("auth");
+document.getElementById("dataSection").style.display="none";
+}
+
+function loadCSV(){
+fetch("data.csv")
+.then(res => res.text())
+.then(data => {
+let rows = data.split("\n");
+let table = document.getElementById("dataTable");
+table.innerHTML="";
+
+rows.forEach((row, index)=>{
+let cols = row.split(",");
+let tr="<tr>";
+
+cols.forEach(col=>{
+tr += index===0 ? "<th>"+col+"</th>" : "<td>"+col+"</td>";
+});
+
+tr+="</tr>";
+table.innerHTML+=tr;
+});
+});
+}
+
+// Auto show if already logged in
+if(localStorage.getItem("auth")==="yes"){
+document.getElementById("dataSection").style.display="block";
+loadCSV();
+}
 </script>
-<noscript><div class="statcounter"><a title="Web Analytics"
-href="https://statcounter.com/" target="_blank"><img
-class="statcounter"
-src="https://c.statcounter.com/13213113/0/a9c2372f/0/"
-alt="Web Analytics"
-referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-<!-- End of Statcounter Code -->
+
 </body>
 </html>
