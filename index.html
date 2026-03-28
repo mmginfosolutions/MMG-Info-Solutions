@@ -6,16 +6,16 @@
 <title>MMG Info Solutions</title>
 
 <style>
-body {font-family: Arial; margin:0; background:#f5f7fa; line-height:1.7;}
-header {display:flex; align-items:center; padding:15px; background:#fff; box-shadow:0 2px 6px #ccc;}
+body {font-family: Arial; margin:0; background:#f5f7fa;}
+header {display:flex; align-items:center; padding:15px; background:#fff; box-shadow:0 2px 5px #ccc;}
 header img {height:60px; margin-right:15px;}
-h1,h2 {color:#007BFF;}
+h2 {color:#007BFF;}
 section {padding:25px;}
 .card {background:#fff; padding:20px; margin-bottom:15px; border-radius:8px; box-shadow:0 2px 5px #ddd;}
 ul {padding-left:20px;}
 button {padding:10px; background:#007BFF; color:#fff; border:none; border-radius:5px;}
+input, textarea {width:100%; padding:10px; margin-bottom:10px;}
 #loginPage {text-align:center; margin-top:120px;}
-input {padding:10px; margin:5px; width:250px;}
 footer {text-align:center; padding:15px; background:#eee;}
 </style>
 
@@ -35,7 +35,7 @@ footer {text-align:center; padding:15px; background:#eee;}
 <div id="mainPage" style="display:none;">
 
 <header>
-<img src="logo.png">
+<img src="logo.png" alt="MMG Logo">
 <h2>MMG INFO SOLUTIONS</h2>
 <button onclick="logout()" style="margin-left:auto;background:red;">Logout</button>
 </header>
@@ -46,75 +46,38 @@ footer {text-align:center; padding:15px; background:#eee;}
 </section>
 
 <section class="card">
-<h2>What is Export?</h2>
-<p>Export refers to sending goods/services to another country for sale. It is a key part of international trade helping economic growth, job creation and revenue generation.</p>
-
+<h2>Core Services</h2>
 <ul>
-<li>Market Research</li>
-<li>Regulations & Documentation</li>
-<li>Logistics & Transport</li>
-<li>Pricing & Payment</li>
-<li>Marketing & Promotion</li>
-<li>Legal Contracts</li>
-<li>Risk Management</li>
-<li>After-Sales Support</li>
-</ul>
-</section>
-
-<section class="card">
-<h2>IEC (Importer Exporter Code)</h2>
-<p>IEC is a 10-digit code issued by DGFT required for import/export business.</p>
-<ul>
-<li>Mandatory for trade</li>
-<li>Lifetime validity</li>
-<li>Required for customs clearance</li>
-</ul>
-</section>
-
-<section class="card">
-<h2>RCMC</h2>
-<p>Registration with Export Promotion Councils to claim incentives and benefits.</p>
-</section>
-
-<section class="card">
-<h2>Digital Signature</h2>
-<p>Used for secure online transactions, authentication and filing documents.</p>
-</section>
-
-<section class="card">
-<h2>RoDTEP / RoSCTL</h2>
-<p>Government schemes to refund taxes and improve export competitiveness.</p>
-</section>
-
-<section class="card">
-<h2>SIMS</h2>
-<p>Steel Import Monitoring System tracks steel imports and ensures compliance.</p>
-</section>
-
-<section class="card">
-<h2>Certificate of Origin</h2>
-<p>Certifies origin of goods for trade agreements and customs clearance.</p>
-</section>
-
-<section class="card">
-<h2>Insurance Services</h2>
-<ul>
-<li>Health & Life Insurance</li>
-<li>Travel Insurance</li>
-<li>Cargo Insurance</li>
-<li>Property Insurance</li>
+<li><b>IEC</b> – End-to-end IEC applications & renewals</li>
+<li><b>RCMC</b> – Registration & renewals</li>
+<li><b>RoDTEP & RoSCTL</b> – Duty refund filing</li>
+<li><b>SIMS</b> – 284 HS items, URN valid 75 days</li>
+<li><b>Certificate of Origin</b></li>
+<li><b>Insurance Broking</b></li>
 </ul>
 </section>
 
 <section class="card">
 <h2>Why Choose Us</h2>
 <ul>
-<li>Trade Expertise</li>
-<li>Compliance Updates</li>
-<li>Accuracy</li>
+<li>Expertise Across Trade Ecosystem</li>
+<li>Regulatory Compliance & Updates</li>
+<li>Efficiency & Accuracy</li>
 <li>Custom Solutions</li>
-<li>Risk Protection</li>
+<li>Risk Mitigation via Insurance</li>
 </ul>
+</section>
+
+<section class="card">
+<h2>Service Overview</h2>
+<table border="1" width="100%">
+<tr><th>Service</th><th>What We Offer</th></tr>
+<tr><td>IEC & RCMC</td><td>Registration, updates, renewals</td></tr>
+<tr><td>Export Incentives</td><td>RoDTEP & RoSCTL</td></tr>
+<tr><td>SIMS</td><td>URN generation</td></tr>
+<tr><td>CoO</td><td>FTA/PTA certificates</td></tr>
+<tr><td>Insurance</td><td>Coverage & claims</td></tr>
+</table>
 </section>
 
 <section class="card">
@@ -123,13 +86,27 @@ footer {text-align:center; padding:15px; background:#eee;}
 <li>Importers</li>
 <li>Exporters</li>
 <li>Manufacturers</li>
-<li>Businesses needing compliance</li>
+<li>Compliance-focused businesses</li>
 </ul>
 </section>
 
+<!-- REQUEST FORM -->
 <section class="card">
-<h2>Contact</h2>
-<p>Ready to elevate your global trade operations? Contact us today.</p>
+<h2>Request Form</h2>
+
+<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+<input type="text" name="name" placeholder="Name" required>
+<input type="tel" name="mobile" placeholder="Mobile Number" required>
+<input type="email" name="email" placeholder="Email ID" required>
+<textarea name="remarks" placeholder="Your Remarks"></textarea>
+<button type="submit">Submit</button>
+</form>
+
+</section>
+
+<section>
+<p><b>Ready to elevate your global trade operations?</b><br>
+Contact MMG Info Solutions today.</p>
 </section>
 
 <footer>
