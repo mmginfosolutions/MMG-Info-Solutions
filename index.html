@@ -4,449 +4,201 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MMG Info Solutions</title>
+
   <style>
-    /* Basic Reset and styles */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #0b1a40;
       color: white;
-      line-height: 1.6;
     }
-    a {
-      color: #ff7a00;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+
     header {
       background-color: #0f2a72;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       padding: 10px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
+
     .logo {
       display: flex;
       align-items: center;
       gap: 10px;
     }
+
     .logo img {
-      height: 40px;
+      height: 50px;
     }
+
     nav ul {
       list-style: none;
       display: flex;
-      margin: 0;
-      padding: 0;
       gap: 20px;
-      font-weight: 600;
-      font-size: 1rem;
     }
-    nav ul li {
-      padding: 6px 0;
+
+    nav a {
+      color: #ff7a00;
+      text-decoration: none;
+      font-weight: bold;
     }
-    /* Login form styles */
+
     #login-form {
       display: flex;
       gap: 10px;
-      align-items: center;
     }
-    #password-input {
-      padding: 6px 10px;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-    }
+
     #login-button, #logout-button {
-      background-color: #ff7a00;
+      background: #ff7a00;
       border: none;
-      padding: 7px 15px;
-      border-radius: 4px;
+      padding: 6px 12px;
       color: white;
-      font-weight: 600;
       cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
     }
-    #login-button:hover, #logout-button:hover {
-      background-color: #e06a00;
-    }
+
     main {
       max-width: 900px;
-      margin: 40px auto;
-      padding: 0 15px;
+      margin: auto;
+      padding: 20px;
     }
+
     h1, h2 {
       color: #ff7a00;
-      font-weight: 700;
     }
-    ul, ol {
-      margin-left: 20px;
-      font-size: 1rem;
-    }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 10px;
-      color: white;
-      font-size: 1rem;
+      margin-top: 20px;
     }
+
     th, td {
       border: 1px solid #444;
       padding: 10px;
-      text-align: left;
     }
-    th {
-      background-color: #0f2a72;
-    }
-    hr {
-      border-color: #ff7a00;
-      margin: 40px 0;
-      border-width: 1px 0 0 0;
-    }
-    /* Hidden content initially */
+
     #protected-content {
       display: none;
     }
-    /* Responsive nav */
-    @media (max-width: 600px) {
-      nav ul {
-        flex-direction: column;
-        gap: 10px;
-      }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-      #login-form {
-        width: 100%;
-        justify-content: flex-start;
-      }
-      #password-input {
-        flex: 1;
-      }
-    }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="logo">
-      <!-- Replace src with your logo file path -->
-      <img src="logo.png" alt="MMG Logo" style="height:50px;" />
-      <span style="font-weight: 700; font-size: 1.25rem;">MMG Info Solutions</span>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#welcome">Home</a></li>
-        <li><a href="#core-services">Services</a></li>
-        <li><a href="#why-choose-us">Why Choose Us</a></li>
-        <li><a href="#ideal-clients">Ideal Clients</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <form id="login-form" onsubmit="return false;">
-      <input type="password" id="password-input" placeholder="Password" />
-      <button id="login-button" type="submit">Login</button>
-      <button id="logout-button" type="button" style="display:none;">Logout</button>
-    </form>
-  </header>
 
-  <main>
-    <!-- Public content -->
-    <section id="welcome">
-      <h1>Welcome to MMG INFO SOLUTIONS,</h1>
-      <p>Simplifying trade & compliance—so you can focus on growth.</p>
-    </section>
+<header>
+  <div class="logo">
+    <img src="logo.png" alt="Logo">
+    <span>MMG Info Solutions</span>
+  </div>
 
-    <section id="core-services">
-      <h2>🌍 Core Services:</h2>
-      <ul>
-        <li><strong>Import Export Code (IEC)</strong><br />End-to-end management of IEC applications, modifications, and renewals in full compliance with DGFT guidelines.</li>
-        <li><strong>Registration-cum-Membership Certificate (RCMC)</strong><br />Streamlined handling of RCMC applications and renewals across export promotion councils.</li>
-        <li><strong>Digital Signature Certificate (DSC)</strong><br />We provide reliable and secure Digital Signature Certificates (DSC) through authorized Certifying Authorities (CAs). Our services ensure seamless authentication, data integrity, and compliance with regulatory requirements for individuals and businesses.</li>
-        <li><strong>RoDTEP & RoSCTL</strong><br />Expertise in filing under RoDTEP and RoSCTL schemes to maximize duty refunds for exporters.</li>
-        <li><strong>Steel Import Monitoring System (SIMS)</strong><br />Advanced registration and monitoring support under the Steel Import Monitoring System:
-          <ul>
-            <li>Covers import of 284 HS-coded steel items</li>
-            <li>URN generation valid for 75 days with a prescribed fee structure</li>
-          </ul>
-        </li>
-        <li><strong>Certificate of Origin (CoO)</strong><br />Fast, reliable issuance of CoO via the national e-platform—compliant with FTA and PTA partner requirements.</li>
-        <li><strong>Insurance Broking</strong><br />Comprehensive broking and advisory solutions across all insurance verticals—marine cargo, liability, trade credit, and more.</li>
-      </ul>
-    </section>
+  <nav>
+    <ul>
+      <li><a href="#welcome">Home</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <hr />
+  <form id="login-form" onsubmit="return false;">
+    <input type="password" id="password-input" placeholder="Password">
+    <button id="login-button">Login</button>
+    <button id="logout-button" type="button" style="display:none;">Logout</button>
+  </form>
+</header>
 
-    <section id="why-choose-us">
-      <h2>✅ Why Choose Us:</h2>
-      <ol>
-        <li><strong>Expertise Across the Trade Ecosystem</strong><br />From documentation to compliance and claim settlements, we handle every critical step.</li>
-        <li><strong>Regulatory Compliance & Updates</strong><br />Stay aligned with evolving DGFT norms, tariff codes, SIMS updates (SIMS 2.0 launched July 25, 2024), taxguru.in, and export schemes.</li>
-        <li><strong>Efficiency & Accuracy</strong><br />Avoid delays and penalties with precise filings and proactive monitoring.</li>
-        <li><strong>Custom Solutions</strong><br />Services tailored to your product category—be it metals, electronics, agriculture, or textiles.</li>
-        <li><strong>Risk Mitigation via Insurance</strong><br />End-to-end support from risk assessment to policy selection and claims advocacy.</li>
-      </ol>
-    </section>
+<main>
 
-    <hr />
+<section id="welcome">
+  <h1>Welcome to MMG Info Solutions</h1>
+  <p>Simplifying trade & compliance.</p>
+</section>
 
-    <section id="service-overview">
-      <h2>🔎 Our Service Overview</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Service</th>
-            <th>What We Offer</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>IEC, RCMC & DSC</strong></td>
-            <td>Registration, updates, renewals—all compliant</td>
-          </tr>
-          <tr>
-            <td><strong>Export Incentives</strong></td>
-            <td>RoDTEP & RoSCTL filings, subsidy claims, query resolution</td>
-          </tr>
-          <tr>
-            <td><strong>SIMS Compliance</strong></td>
-            <td>Online registration, URN generation, customs clearance support</td>
-          </tr>
-          <tr>
-            <td><strong>CoO Issuance</strong></td>
-            <td>Digital certificates for all FTAs/PTAs via central platform</td>
-          </tr>
-          <tr>
-            <td><strong>Insurance Broking</strong></td>
-            <td>Marine, Liability, Property, Health & Life structured coverage and claims support</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Phone: +91-9867965837</p>
+  <p>Email: mmginfosolutions@gmail.com</p>
+</section>
 
-    <hr />
-
-    <section id="ideal-clients">
-      <h2>🔎 Ideal Clients:</h2>
-      <ul>
-        <li>Importers of steel, metal, and HS-coded goods requiring SIMS licensing and compliance.</li>
-        <li>Exporters aiming for trade benefits under RoDTEP, RoSCTL, RCMC, and FTAs.</li>
-        <li>Manufacturers & Traders needing accurate CoO issuance and insurance protection.</li>
-        <li>Businesses seeking comprehensive support in managing trade regulations and insurance risk.</li>
-      </ul>
-    </section>
-
-    <hr />
-
-    <section id="contact">
-      <h2>Ready to elevate your global trade operations?</h2>
-      <p>
-        Contact <strong>MMG Info Solutions</strong> today for a free consultation on compliance, incentives, documentation, and insurance—so your business can excel without regulatory hassles.
-      </p>
-  <p><strong>Phone:</strong> +91-9867965837</p>
-    <p><strong>Email:</strong> <a href="mailto:mmginfosolutions@gmail.com">mmginfosolutions@gmail.com</a></p>
-    <p><strong>Location:</strong> Mumbai, India</p>
-      </section>
-</main>
-    </section>
-
-    <!-- Protected content below -->
-   <section id="protected-content">
-  <h2>Protected Data Section</h2>
+<!-- Protected Section -->
+<section id="protected-content">
+  <h2>Protected Data (CSV)</h2>
   <div id="csv-table"></div>
 </section>
-  </main>
 
-  <script>
-    // Password for login - change as needed
-    const PASSWORD = 'MMG@2026';
+</main>
 
-    const loginForm = document.getElementById('login-form');
-    const passwordInput = document.getElementById('password-input');
-    const loginButton = document.getElementById('login-button');
-    const logoutButton = document.getElementById('logout-button');
-    const protectedContent = document.getElementById('protected-content');
+<script>
+const PASSWORD = "MMG@2026";
 
-    // Check if already logged in on page load
-    window.onload = function () {
-      if (localStorage.getItem('mmgLoggedIn') === 'true') {
-        showProtectedContent();
-      } else {
-        hideProtectedContent();
-      }
-    };
+const loginForm = document.getElementById("login-form");
+const passwordInput = document.getElementById("password-input");
+const loginButton = document.getElementById("login-button");
+const logoutButton = document.getElementById("logout-button");
+const protectedContent = document.getElementById("protected-content");
 
-    loginForm.addEventListener('submit', function () {
-      const enteredPassword = passwordInput.value;
-      if (enteredPassword === PASSWORD) {
-        localStorage.setItem('mmgLoggedIn', 'true');
-        showProtectedContent();
-        passwordInput.value = '';
-      } else {
-        alert('Incorrect password. Please try again.');
-        passwordInput.value = '';
-      }
-    });
+function loadCSV() {
+  fetch("data.csv")
+    .then(res => res.text())
+    .then(data => {
+      let rows = data.trim().split("\n");
+      let table = "<table><tr>";
 
-    logoutButton.addEventListener('click', function () {
-      localStorage.removeItem('mmgLoggedIn');
-      hideProtectedContent();
-    });
-
-  function showProtectedContent() {
-  protectedContent.style.display = 'block';
-  loginButton.style.display = 'none';
-  logoutButton.style.display = 'inline-block';
-  passwordInput.style.display = 'none';
-
-  loadCSV(); // ✅ IMPORTANT
-}
-    function hideProtectedContent() {
-      protectedContent.style.display = 'none';
-      loginButton.style.display = 'inline-block';
-      logoutButton.style.display = 'none';
-      passwordInput.style.display = 'inline-block';
-    }
- <script>
-  const PASSWORD = 'MMG@2026';
-
-  const loginForm = document.getElementById('login-form');
-  const passwordInput = document.getElementById('password-input');
-  const loginButton = document.getElementById('login-button');
-  const logoutButton = document.getElementById('logout-button');
-  const protectedContent = document.getElementById('protected-content');
-
-  function loadCSV() {
-    fetch('data.csv')
-      .then(response => response.text())
-      .then(data => {
-        const rows = data.trim().split('\n');
-        let table = '<table><tr>';
-
-        const headers = rows[0].split(',');
-        headers.forEach(header => {
-          table += `<th>${header}</th>`;
-        });
-        table += '</tr>';
-
-        for (let i = 1; i < rows.length; i++) {
-          const cols = rows[i].split(',');
-          table += '<tr>';
-          cols.forEach(col => {
-            table += `<td>${col}</td>`;
-          });
-          table += '</tr>';
-        }
-
-        table += '</table>';
-        document.getElementById('csv-table').innerHTML = table;
-      })
-      .catch(error => {
-        document.getElementById('csv-table').innerHTML = "Error loading data.csv";
-        console.error(error);
+      rows[0].split(",").forEach(h => {
+        table += "<th>" + h + "</th>";
       });
+
+      table += "</tr>";
+
+      for (let i = 1; i < rows.length; i++) {
+        table += "<tr>";
+        rows[i].split(",").forEach(c => {
+          table += "<td>" + c + "</td>";
+        });
+        table += "</tr>";
+      }
+
+      table += "</table>";
+      document.getElementById("csv-table").innerHTML = table;
+    })
+    .catch(() => {
+      document.getElementById("csv-table").innerHTML = "Error loading CSV";
+    });
+}
+
+function showProtectedContent() {
+  protectedContent.style.display = "block";
+  loginButton.style.display = "none";
+  logoutButton.style.display = "inline-block";
+  passwordInput.style.display = "none";
+  loadCSV();
+}
+
+function hideProtectedContent() {
+  protectedContent.style.display = "none";
+  loginButton.style.display = "inline-block";
+  logoutButton.style.display = "none";
+  passwordInput.style.display = "inline-block";
+}
+
+loginForm.addEventListener("submit", () => {
+  if (passwordInput.value === PASSWORD) {
+    localStorage.setItem("login", "true");
+    showProtectedContent();
+  } else {
+    alert("Wrong Password");
   }
+});
 
-  function showProtectedContent() {
-    protectedContent.style.display = 'block';
-    loginButton.style.display = 'none';
-    logoutButton.style.display = 'inline-block';
-    passwordInput.style.display = 'none';
+logoutButton.addEventListener("click", () => {
+  localStorage.removeItem("login");
+  hideProtectedContent();
+});
 
-    loadCSV(); // ✅ important
+window.onload = () => {
+  if (localStorage.getItem("login") === "true") {
+    showProtectedContent();
   }
-
-  function hideProtectedContent() {
-    protectedContent.style.display = 'none';
-    loginButton.style.display = 'inline-block';
-    logoutButton.style.display = 'none';
-    passwordInput.style.display = 'inline-block';
-  }
-
-  loginForm.addEventListener('submit', function () {
-    if (passwordInput.value === PASSWORD) {
-      localStorage.setItem('mmgLoggedIn', 'true');
-      showProtectedContent();
-      passwordInput.value = '';
-    } else {
-      alert('Incorrect password');
-    }
-  });
-
-  logoutButton.addEventListener('click', function () {
-    localStorage.removeItem('mmgLoggedIn');
-    hideProtectedContent();
-  });
-
-  window.onload = function () {
-    if (localStorage.getItem('mmgLoggedIn') === 'true') {
-      showProtectedContent();
-    }
-  };
+};
 </script>
 
-  function showProtectedContent() {
-    protectedContent.style.display = 'block';
-    loginButton.style.display = 'none';
-    logoutButton.style.display = 'inline-block';
-    passwordInput.style.display = 'none';
-
-    loadCSV(); // ✅ important
-  }
-
-  function hideProtectedContent() {
-    protectedContent.style.display = 'none';
-    loginButton.style.display = 'inline-block';
-    logoutButton.style.display = 'none';
-    passwordInput.style.display = 'inline-block';
-  }
-
-  loginForm.addEventListener('submit', function () {
-    if (passwordInput.value === PASSWORD) {
-      localStorage.setItem('mmgLoggedIn', 'true');
-      showProtectedContent();
-      passwordInput.value = '';
-    } else {
-      alert('Incorrect password');
-    }
-  });
-
-  logoutButton.addEventListener('click', function () {
-    localStorage.removeItem('mmgLoggedIn');
-    hideProtectedContent();
-  });
-
-  window.onload = function () {
-    if (localStorage.getItem('mmgLoggedIn') === 'true') {
-      showProtectedContent();
-    }
-  };
-</script>
-  <!-- STATCOUNTER -->
-<!-- Default Statcounter code for MMG INFO SOLUTIONS
-https://mmginfosolutions.github.io/MMG-Info-Solutions/ -->
-<script type="text/javascript">
-var sc_project=13213113; 
-var sc_invisible=0; 
-var sc_security="a9c2372f"; 
-var scJsHost = "https://";
-document.write("<sc"+"ript type='text/javascript' src='" +
-scJsHost+
-"statcounter.com/counter/counter.js'></"+"script>");
-</script>
-<noscript><div class="statcounter"><a title="Web Analytics"
-href="https://statcounter.com/" target="_blank"><img
-class="statcounter"
-src="https://c.statcounter.com/13213113/0/a9c2372f/0/"
-alt="Web Analytics"
-referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
-<!-- End of Statcounter Code -->
 </body>
 </html>
