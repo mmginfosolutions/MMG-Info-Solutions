@@ -258,13 +258,10 @@
     </section>
 
     <!-- Protected content below -->
-    <section id="protected-content">
-      <h2>Protected Data Section</h2>
-      <p>This content is visible only after login.</p>
-      <!-- You can add your CSV table and download button here -->
-      <!-- Example placeholder -->
-      <p><em>CSV data and download button will show here after login.</em></p>
-    </section>
+   <section id="protected-content">
+  <h2>Protected Data Section</h2>
+  <div id="csv-table"></div>
+</section>
   </main>
 
   <script>
@@ -303,13 +300,14 @@
       hideProtectedContent();
     });
 
-    function showProtectedContent() {
-      protectedContent.style.display = 'block';
-      loginButton.style.display = 'none';
-      logoutButton.style.display = 'inline-block';
-      passwordInput.style.display = 'none';
-    }
+  function showProtectedContent() {
+  protectedContent.style.display = 'block';
+  loginButton.style.display = 'none';
+  logoutButton.style.display = 'inline-block';
+  passwordInput.style.display = 'none';
 
+  loadCSV(); // ✅ IMPORTANT
+}
     function hideProtectedContent() {
       protectedContent.style.display = 'none';
       loginButton.style.display = 'inline-block';
@@ -317,7 +315,39 @@
       passwordInput.style.display = 'inline-block';
     }
   </script>
-<!-- STATCOUNTER -->
+function loadCSV() {
+  fetch('data.csv')
+    .then(response => response.text())
+    .then(data => {
+      const rows = data.trim().split('\n');
+      let table = '<table><tr>';
+
+      // headers
+      const headers = rows[0].split(',');
+      headers.forEach(header => {
+        table += `<th>${header}</th>`;
+      });
+      table += '</tr>';
+
+      // rows
+      for (let i = 1; i < rows.length; i++) {
+        const cols = rows[i].split(',');
+        table += '<tr>';
+        cols.forEach(col => {
+          table += `<td>${col}</td>`;
+        });
+        table += '</tr>';
+      }
+
+      table += '</table>';
+      document.getElementById('csv-table').innerHTML = table;
+    })
+    .catch(error => {
+      document.getElementById('csv-table').innerHTML = "Error loading data.csv";
+      console.error(error);
+    });
+}
+  <!-- STATCOUNTER -->
 <!-- Default Statcounter code for MMG INFO SOLUTIONS
 https://mmginfosolutions.github.io/MMG-Info-Solutions/ -->
 <script type="text/javascript">
