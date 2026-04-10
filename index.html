@@ -314,39 +314,121 @@
       logoutButton.style.display = 'none';
       passwordInput.style.display = 'inline-block';
     }
-  </script>
-function loadCSV() {
-  fetch('data.csv')
-    .then(response => response.text())
-    .then(data => {
-      const rows = data.trim().split('\n');
-      let table = '<table><tr>';
+ <script>
+  const PASSWORD = 'MMG@2026';
 
-      // headers
-      const headers = rows[0].split(',');
-      headers.forEach(header => {
-        table += `<th>${header}</th>`;
-      });
-      table += '</tr>';
+  const loginForm = document.getElementById('login-form');
+  const passwordInput = document.getElementById('password-input');
+  const loginButton = document.getElementById('login-button');
+  const logoutButton = document.getElementById('logout-button');
+  const protectedContent = document.getElementById('protected-content');
 
-      // rows
-      for (let i = 1; i < rows.length; i++) {
-        const cols = rows[i].split(',');
-        table += '<tr>';
-        cols.forEach(col => {
-          table += `<td>${col}</td>`;
+  function loadCSV() {
+    fetch('data.csv')
+      .then(response => response.text())
+      .then(data => {
+        const rows = data.trim().split('\n');
+        let table = '<table><tr>';
+
+        const headers = rows[0].split(',');
+        headers.forEach(header => {
+          table += `<th>${header}</th>`;
         });
         table += '</tr>';
-      }
 
-      table += '</table>';
-      document.getElementById('csv-table').innerHTML = table;
-    })
-    .catch(error => {
-      document.getElementById('csv-table').innerHTML = "Error loading data.csv";
-      console.error(error);
-    });
-}
+        for (let i = 1; i < rows.length; i++) {
+          const cols = rows[i].split(',');
+          table += '<tr>';
+          cols.forEach(col => {
+            table += `<td>${col}</td>`;
+          });
+          table += '</tr>';
+        }
+
+        table += '</table>';
+        document.getElementById('csv-table').innerHTML = table;
+      })
+      .catch(error => {
+        document.getElementById('csv-table').innerHTML = "Error loading data.csv";
+        console.error(error);
+      });
+  }
+
+  function showProtectedContent() {
+    protectedContent.style.display = 'block';
+    loginButton.style.display = 'none';
+    logoutButton.style.display = 'inline-block';
+    passwordInput.style.display = 'none';
+
+    loadCSV(); // ✅ important
+  }
+
+  function hideProtectedContent() {
+    protectedContent.style.display = 'none';
+    loginButton.style.display = 'inline-block';
+    logoutButton.style.display = 'none';
+    passwordInput.style.display = 'inline-block';
+  }
+
+  loginForm.addEventListener('submit', function () {
+    if (passwordInput.value === PASSWORD) {
+      localStorage.setItem('mmgLoggedIn', 'true');
+      showProtectedContent();
+      passwordInput.value = '';
+    } else {
+      alert('Incorrect password');
+    }
+  });
+
+  logoutButton.addEventListener('click', function () {
+    localStorage.removeItem('mmgLoggedIn');
+    hideProtectedContent();
+  });
+
+  window.onload = function () {
+    if (localStorage.getItem('mmgLoggedIn') === 'true') {
+      showProtectedContent();
+    }
+  };
+</script>
+
+  function showProtectedContent() {
+    protectedContent.style.display = 'block';
+    loginButton.style.display = 'none';
+    logoutButton.style.display = 'inline-block';
+    passwordInput.style.display = 'none';
+
+    loadCSV(); // ✅ important
+  }
+
+  function hideProtectedContent() {
+    protectedContent.style.display = 'none';
+    loginButton.style.display = 'inline-block';
+    logoutButton.style.display = 'none';
+    passwordInput.style.display = 'inline-block';
+  }
+
+  loginForm.addEventListener('submit', function () {
+    if (passwordInput.value === PASSWORD) {
+      localStorage.setItem('mmgLoggedIn', 'true');
+      showProtectedContent();
+      passwordInput.value = '';
+    } else {
+      alert('Incorrect password');
+    }
+  });
+
+  logoutButton.addEventListener('click', function () {
+    localStorage.removeItem('mmgLoggedIn');
+    hideProtectedContent();
+  });
+
+  window.onload = function () {
+    if (localStorage.getItem('mmgLoggedIn') === 'true') {
+      showProtectedContent();
+    }
+  };
+</script>
   <!-- STATCOUNTER -->
 <!-- Default Statcounter code for MMG INFO SOLUTIONS
 https://mmginfosolutions.github.io/MMG-Info-Solutions/ -->
