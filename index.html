@@ -1,204 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MMG Info Solutions</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MMG Info Solutions</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0b1a40;
-      color: white;
-    }
+<style>
+body {
+  margin:0;
+  font-family: Arial, sans-serif;
+  background:#0b1a40;
+  color:white;
+}
 
-    header {
-      background-color: #0f2a72;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-    }
+header {
+  background:#0f2a72;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 20px;
+  flex-wrap:wrap;
+}
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+.logo {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
 
-    .logo img {
-      height: 50px;
-    }
+.logo img {
+  height:50px;
+}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
+nav ul {
+  display:flex;
+  gap:15px;
+  list-style:none;
+  padding:0;
+}
 
-    nav a {
-      color: #ff7a00;
-      text-decoration: none;
-      font-weight: bold;
-    }
+nav a {
+  color:#ff7a00;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-    #login-form {
-      display: flex;
-      gap: 10px;
-    }
+#login-form {
+  display:flex;
+  gap:5px;
+}
 
-    #login-button, #logout-button {
-      background: #ff7a00;
-      border: none;
-      padding: 6px 12px;
-      color: white;
-      cursor: pointer;
-    }
+button {
+  background:#ff7a00;
+  border:none;
+  padding:6px 12px;
+  color:white;
+  cursor:pointer;
+}
 
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
+main {
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+}
 
-    h1, h2 {
-      color: #ff7a00;
-    }
+h1,h2 {
+  color:#ff7a00;
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
+section {
+  margin-bottom:40px;
+}
 
-    th, td {
-      border: 1px solid #444;
-      padding: 10px;
-    }
+table {
+  width:100%;
+  border-collapse:collapse;
+}
 
-    #protected-content {
-      display: none;
-    }
-  </style>
+th,td {
+  border:1px solid #444;
+  padding:8px;
+}
+
+th {
+  background:#0f2a72;
+}
+
+#protected-content {
+  display:none;
+  background:#08122c;
+  padding:15px;
+  border-radius:8px;
+}
+
+footer {
+  text-align:center;
+  padding:15px;
+  background:#0f2a72;
+  margin-top:40px;
+}
+
+@media(max-width:600px){
+  nav ul {flex-direction:column;}
+}
+</style>
 </head>
 
 <body>
 
 <header>
   <div class="logo">
-    <img src="logo.png" alt="Logo">
-    <span>MMG Info Solutions</span>
+    <img src="logo.png" alt="logo">
+    <b>MMG Info Solutions</b>
   </div>
 
   <nav>
     <ul>
-      <li><a href="#welcome">Home</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
   <form id="login-form" onsubmit="return false;">
-    <input type="password" id="password-input" placeholder="Password">
-    <button id="login-button">Login</button>
-    <button id="logout-button" type="button" style="display:none;">Logout</button>
+    <input type="password" id="password" placeholder="Password">
+    <button id="loginBtn">Login</button>
+    <button id="logoutBtn" type="button" style="display:none;">Logout</button>
   </form>
 </header>
 
 <main>
 
-<section id="welcome">
+<section id="home">
   <h1>Welcome to MMG Info Solutions</h1>
-  <p>Simplifying trade & compliance.</p>
+  <p>Simplifying trade & compliance so you can focus on growth.</p>
+</section>
+
+<section id="services">
+  <h2>Our Services</h2>
+  <ul>
+    <li>Import Export Code (IEC)</li>
+    <li>RCMC Registration</li>
+    <li>Digital Signature (DSC)</li>
+    <li>RoDTEP / RoSCTL</li>
+    <li>SIMS Compliance</li>
+    <li>Certificate of Origin</li>
+    <li>Insurance Broking</li>
+  </ul>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <p>Phone: +91-9867965837</p>
-  <p>Email: mmginfosolutions@gmail.com</p>
+  <p>📞 +91-9867965837</p>
+  <p>📧 mmginfosolutions@gmail.com</p>
+  <p>📍 Mumbai, India</p>
 </section>
 
-<!-- Protected Section -->
+<!-- Protected -->
 <section id="protected-content">
-  <h2>Protected Data (CSV)</h2>
-  <div id="csv-table"></div>
+  <h2>Client Data</h2>
+  <div id="tableData"></div>
 </section>
 
 </main>
 
+<footer>
+  © 2026 MMG Info Solutions
+</footer>
+
 <script>
 const PASSWORD = "MMG@2026";
 
-const loginForm = document.getElementById("login-form");
-const passwordInput = document.getElementById("password-input");
-const loginButton = document.getElementById("login-button");
-const logoutButton = document.getElementById("logout-button");
+const loginBtn = document.getElementById("loginBtn");
+const logoutBtn = document.getElementById("logoutBtn");
+const password = document.getElementById("password");
 const protectedContent = document.getElementById("protected-content");
 
-function loadCSV() {
-  fetch("data.csv")
-    .then(res => res.text())
-    .then(data => {
-      let rows = data.trim().split("\n");
-      let table = "<table><tr>";
+function loadCSV(){
+ fetch("data.csv")
+ .then(res=>res.text())
+ .then(data=>{
+   let rows=data.trim().split("\n");
+   let html="<table><tr>";
 
-      rows[0].split(",").forEach(h => {
-        table += "<th>" + h + "</th>";
-      });
+   rows[0].split(",").forEach(h=>{
+     html+="<th>"+h+"</th>";
+   });
 
-      table += "</tr>";
+   html+="</tr>";
 
-      for (let i = 1; i < rows.length; i++) {
-        table += "<tr>";
-        rows[i].split(",").forEach(c => {
-          table += "<td>" + c + "</td>";
-        });
-        table += "</tr>";
-      }
+   for(let i=1;i<rows.length;i++){
+     html+="<tr>";
+     rows[i].split(",").forEach(c=>{
+       html+="<td>"+c+"</td>";
+     });
+     html+="</tr>";
+   }
 
-      table += "</table>";
-      document.getElementById("csv-table").innerHTML = table;
-    })
-    .catch(() => {
-      document.getElementById("csv-table").innerHTML = "Error loading CSV";
-    });
+   html+="</table>";
+   document.getElementById("tableData").innerHTML=html;
+ })
+ .catch(()=>{
+   document.getElementById("tableData").innerHTML="Error loading CSV";
+ });
 }
 
-function showProtectedContent() {
-  protectedContent.style.display = "block";
-  loginButton.style.display = "none";
-  logoutButton.style.display = "inline-block";
-  passwordInput.style.display = "none";
-  loadCSV();
+loginBtn.onclick = ()=>{
+ if(password.value === PASSWORD){
+   localStorage.setItem("login","yes");
+   showData();
+ } else {
+   alert("Wrong Password");
+ }
+};
+
+logoutBtn.onclick = ()=>{
+ localStorage.removeItem("login");
+ hideData();
+};
+
+function showData(){
+ protectedContent.style.display="block";
+ loginBtn.style.display="none";
+ logoutBtn.style.display="inline-block";
+ password.style.display="none";
+ loadCSV();
 }
 
-function hideProtectedContent() {
-  protectedContent.style.display = "none";
-  loginButton.style.display = "inline-block";
-  logoutButton.style.display = "none";
-  passwordInput.style.display = "inline-block";
+function hideData(){
+ protectedContent.style.display="none";
+ loginBtn.style.display="inline-block";
+ logoutBtn.style.display="none";
+ password.style.display="inline-block";
 }
 
-loginForm.addEventListener("submit", () => {
-  if (passwordInput.value === PASSWORD) {
-    localStorage.setItem("login", "true");
-    showProtectedContent();
-  } else {
-    alert("Wrong Password");
-  }
-});
-
-logoutButton.addEventListener("click", () => {
-  localStorage.removeItem("login");
-  hideProtectedContent();
-});
-
-window.onload = () => {
-  if (localStorage.getItem("login") === "true") {
-    showProtectedContent();
-  }
+window.onload = ()=>{
+ if(localStorage.getItem("login")==="yes"){
+   showData();
+ }
 };
 </script>
 
+  <!-- STATCOUNTER -->
+<!-- Default Statcounter code for MMG INFO SOLUTIONS
+https://mmginfosolutions.github.io/MMG-Info-Solutions/ -->
+<script type="text/javascript">
+var sc_project=13213113; 
+var sc_invisible=0; 
+var sc_security="a9c2372f"; 
+var scJsHost = "https://";
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="Web Analytics"
+href="https://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="https://c.statcounter.com/13213113/0/a9c2372f/0/"
+alt="Web Analytics"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
 </body>
 </html>
