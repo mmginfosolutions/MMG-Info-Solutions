@@ -278,31 +278,35 @@ const password = document.getElementById("password");
 const protectedContent = document.getElementById("protected-content");
 
 function loadCSV(){
- fetch("data.csv")
- .then(res=>res.text())
- .then(data=>{
-   let rows=data.trim().split("\n");
-   let html="<table><tr>";
+ fetch("https://mmginfosolutions.github.io/MMG-Info-Solutions/data.csv")
+ .then(res => {
+   if(!res.ok) throw new Error("File not found");
+   return res.text();
+ })
+ .then(data => {
+   let rows = data.trim().split("\n");
+   let html = "<table><tr>";
 
    rows[0].split(",").forEach(h=>{
-     html+="<th>"+h+"</th>";
+     html += "<th>"+h+"</th>";
    });
 
-   html+="</tr>";
+   html += "</tr>";
 
    for(let i=1;i<rows.length;i++){
-     html+="<tr>";
+     html += "<tr>";
      rows[i].split(",").forEach(c=>{
-       html+="<td>"+c+"</td>";
+       html += "<td>"+c+"</td>";
      });
-     html+="</tr>";
+     html += "</tr>";
    }
 
-   html+="</table>";
-   document.getElementById("tableData").innerHTML=html;
+   html += "</table>";
+   document.getElementById("csv-table").innerHTML = html;
  })
- .catch(()=>{
-   document.getElementById("tableData").innerHTML="Error loading CSV";
+ .catch(err=>{
+   document.getElementById("csv-table").innerHTML = "❌ CSV not loading. Check file path.";
+   console.error(err);
  });
 }
 
