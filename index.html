@@ -6,7 +6,19 @@
 <title>MMG Info Solutions</title>
 
 <style>
-body {
+#searchBox {
+  padding:6px;
+  width:200px;
+}
+
+#uploadCSV {
+  margin-left:10px;
+}
+
+button {
+  margin-left:10px;
+}
+  body {
   margin:0;
   font-family: Arial, sans-serif;
   background:#0b1a40;
@@ -261,6 +273,16 @@ footer {
 <!-- PROTECTED CSV -->
 <section id="protected-content">
   <h2>Client Data</h2>
+
+  <!-- CONTROLS -->
+  <div style="margin-bottom:15px;">
+    <input type="text" id="searchBox" placeholder="Search data..." onkeyup="searchTable()" />
+
+    <input type="file" id="uploadCSV" accept=".csv" />
+
+    <button onclick="downloadCSV()">Download CSV</button>
+  </div>
+
   <div id="csv-table"></div>
 </section>
 </main>
@@ -272,44 +294,97 @@ footer {
 <script>
 const PASSWORD = "MMG@2026";
 
+let csvData = "";
+
 const loginBtn = document.getElementById("loginBtn");
 const logoutBtn = document.getElementById("logoutBtn");
 const password = document.getElementById("password");
 const protectedContent = document.getElementById("protected-content");
 
+/* TABLE RENDER */
+function renderTable(data){
+  let rows = data.trim().split("\n");
+  let html = "<table id='dataTable'><tr>";
+
+  rows[0].split(",").forEach(h=>{
+    html += "<th>"+h+"</th>";
+  });
+
+  html += "</tr>";
+
+  for(let i=1;i<rows.length;i++){
+    html += "<tr>";
+    rows[i].split(",").forEach(c=>{
+      html += "<td>"+c+"</td>";
+    });
+    html += "</tr>";
+  }
+
+  html += "</table>";
+  document.getElementById("csv-table").innerHTML = html;
+}
+
+/* LOAD CSV FROM GITHUB */
 function loadCSV(){
  fetch("https://mmginfosolutions.github.io/MMG-Info-Solutions/data.csv")
- .then(res => {
-   if(!res.ok) throw new Error("File not found");
-   return res.text();
- })
+ .then(res => res.text())
  .then(data => {
-   let rows = data.trim().split("\n");
-   let html = "<table><tr>";
-
-   rows[0].split(",").forEach(h=>{
-     html += "<th>"+h+"</th>";
-   });
-
-   html += "</tr>";
-
-   for(let i=1;i<rows.length;i++){
-     html += "<tr>";
-     rows[i].split(",").forEach(c=>{
-       html += "<td>"+c+"</td>";
-     });
-     html += "</tr>";
-   }
-
-   html += "</table>";
-   document.getElementById("csv-table").innerHTML = html;
+   csvData = data;
+   renderTable(csvData);
  })
- .catch(err=>{
-   document.getElementById("csv-table").innerHTML = "❌ CSV not loading. Check file path.";
-   console.error(err);
+ .catch(()=>{
+   document.getElementById("csv-table").innerHTML = "❌ CSV not loading.";
  });
 }
 
+/* SEARCH */
+function searchTable(){
+ let input = document.getElementById("searchBox").value.toLowerCase();
+ let rows = document.querySelectorAll("#dataTable tr");
+
+ rows.forEach((row, index)=>{
+   if(index === 0) return;
+   let text = row.innerText.toLowerCase();
+   row.style.display = text.includes(input) ? "" : "none";
+ });
+}
+
+/* UPLOAD CSV */
+document.addEventListener("DOMContentLoaded", function(){
+ const upload = document.getElementById("uploadCSV");
+
+ upload.addEventListener("change", function(e){
+   const file = e.target.files[0];
+   if(!file) return;
+
+   const reader = new FileReader();
+   reader.onload = function(event){
+     csvData = event.target.result;
+     renderTable(csvData);
+   };
+   reader.readAsText(file);
+ });
+});
+
+/* DOWNLOAD CSV */
+function downloadCSV(){
+ if(!csvData){
+   alert("No data available");
+   return;
+ }
+
+ const blob = new Blob([csvData], { type: "text/csv" });
+ const url = window.URL.createObjectURL(blob);
+
+ const a = document.createElement("a");
+ a.href = url;
+ a.download = "data.csv";
+ a.click();
+
+ window.URL.revokeObjectURL(url);
+}
+
+/* LOGIN SYSTEM */
 loginBtn.onclick = ()=>{
  if(password.value === PASSWORD){
    localStorage.setItem("login","yes");
@@ -345,7 +420,7 @@ window.onload = ()=>{
  }
 };
 </script>
-
+  
   <!-- STATCOUNTER -->
 <!-- Default Statcounter code for MMG INFO SOLUTIONS
 https://mmginfosolutions.github.io/MMG-Info-Solutions/ -->
